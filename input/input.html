@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script language="javascript" src="jquery1.10.2.min.js"></script>
+</head>
+<body>
+<input name="" type="text"  value="请输入要搜索的关键字" onfocus="if(this.value=='请输入要搜索的关键字'){this.value='';this.style.color='red';}"  onblur="if(this.value==''){this.value='请输入要搜索的关键字';this.style.color='#cccccc';}" style="color:#cccccc;"/>
+<br>
+<br>
+<br>
+<br>
+<input name="q" type="text" size="21" id="search-keyword" value="在这里搜索..." onfocus="if(this.value=='在这里搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='在这里搜索...';}"/>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<input id="opt" type="text" name="username" value="请输入要搜索的关键字" style="color:#ccc;">
+
+<script>
+    var $opt = $("#opt");
+    $opt.blur(function(){
+        if($(this).val() == ""){
+            this.value='请输入要搜索的关键字';
+            this.style.color='#ccc';
+        }
+    }).focus(function(){
+                if(this.value=='请输入要搜索的关键字'){
+                    this.value='';
+                    this.style.color='#666';
+                }
+            });
+</script>
+<style type="text/css">
+    .csh input{
+        color:#ccc;
+    }
+</style>
+<div class="csh">
+    <input type="text" data-type= "请输入您的姓名" value="请输入您的姓名"><br>
+    <input type="text" data-type= "请输入您的手机号" value="请输入您的手机号"><br>
+    <input type="text" data-type="请输入您的邮箱" value="请输入您的邮箱">
+</div>
+<div class="csh">
+    <input type="text" data-type= "请输入您的姓名ff" value="请输入您的姓名ff"><br>
+</div>
+<script>
+    //通用函数 失败焦点-》得到焦点
+    $(function(){
+        var $csh = $(".csh");
+        $csh.find(":input").blur(function(){
+            var self = $(this);
+            var $newVal = self[0].parent;//取值
+            if(self.val() == ""){
+                self.val($newVal);
+                self.css("color","#ccc");
+            }
+            //console.log();
+        }).focus(function(){
+                    var self = $(this);
+                    var $val = self.attr("data-type");
+                    self[0].parent = $val;//存值
+                    if(self.val() == $val){
+                        self.val("");
+                        self.css("color","#666");
+                    }
+
+                });
+    });
+
+</script>
+</body>
+</html>
